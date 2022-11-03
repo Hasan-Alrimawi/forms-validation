@@ -1,0 +1,32 @@
+<form [formGroup]="form" class="columnSpacing">
+    <section>
+        <div class="twoOnRow">
+            <label for="name">Enter your profile's name</label>
+            <input type="text" name="name" formControlName="name" required>
+        </div>
+        <span *ngIf="name.invalid && name.touched">
+            Please Type in the name field.
+        </span>
+    </section>
+    <section>
+        <div class="twoOnRow">
+            <label for="password">Enter your password</label>
+            <input type="password" name="password" formControlName="pass" required>
+        </div>
+        <span *ngIf="pass.errors?.['minlength'] && pass.touched">
+            Password must be longer than 8 characters
+        </span>
+    </section>
+    <section>
+        <div class="twoOnRow">
+            <label for="email">Enter your email</label>
+            <input type="text" name="email" formControlName="email" required>
+        </div>
+        <span *ngIf="(email.invalid && email.touched)">
+            Please enter your email in the correct form
+        </span>
+    </section>
+    <button type="submit">
+        confirm
+    </button>
+</form>
