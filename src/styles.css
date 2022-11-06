@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.twoOnRow{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.columnSpacing{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    background-color: aliceblue;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { nameExcluder, NameValidationDirective } from '../../shared/directives/name-validation.directive';
+import { nameExcluder } from '../../shared/directives/name-validation.directive';
 import { privacyKeeper } from '../../shared/directives/cross-validation.directive';
 import { UniqueEmailValidator } from 'src/app/shared/directives/email-used.directive';
 

@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 export function nameExcluder(blackedListedNames: string[]): ValidatorFn {
   return (controller: AbstractControl): ValidationErrors | null => {
@@ -18,7 +18,7 @@ export class NameValidationDirective implements Validator {
   @Input('appNameValidation') names: string[] = [];                                                         //hereeee
   constructor() { }
 
-  validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    return nameExcluder(this.names);
+  validate(control: FormControl): ValidationErrors | null {
+    return nameExcluder(this.names)(control);
   }
 }
