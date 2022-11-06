@@ -2,10 +2,13 @@
     <section>
         <div class="twoOnRow">
             <label for="name">Enter your profile's name</label>
-            <input type="text" name="name" formControlName="name" required>
+            <input type="text" name="name" formControlName="name" required >
         </div>
-        <span *ngIf="name.invalid && name.touched">
+        <span *ngIf="name.errors?.['required'] && name.touched">
             Please Type in the name field.
+        </span>
+        <span *ngIf="name.errors?.['wrong']">
+            hasan can't be a name.
         </span>
     </section>
     <section>
@@ -22,8 +25,14 @@
             <label for="email">Enter your email</label>
             <input type="text" name="email" formControlName="email" required>
         </div>
-        <span *ngIf="(email.invalid && email.touched)">
+        <span *ngIf="(email.errors?.['email'] && email.touched)">
             Please enter your email in the correct form
+        </span>
+        <span *ngIf="form.errors?.['privacyBreached']  && pass.valid">
+            Password can't be a substring of the email.
+        </span>
+        <span *ngIf="email.errors?.['usedEmail']">
+            This email is already used.
         </span>
     </section>
     <button type="submit">

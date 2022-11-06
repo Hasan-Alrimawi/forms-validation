@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NameValidationDirective } from './name-validation.directive';
+import { NameValidationDirective } from './directives/name-validation.directive';
+import { CrossValidationDirective } from './directives/cross-validation.directive';
 
 
 
 @NgModule({
   declarations: [
-    NameValidationDirective
+    NameValidationDirective,
+    CrossValidationDirective,
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    NameValidationDirective,
   ]
 })
 export class SharedModule { }
