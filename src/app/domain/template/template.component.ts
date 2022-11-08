@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NameValidationDirective } from 'src/app/shared/directives/name-validation.directive';
+import { NgModel, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-template',
@@ -15,5 +15,4 @@ export class TemplateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

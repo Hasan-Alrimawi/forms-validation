@@ -4,10 +4,10 @@
             <label for="name">Enter your profile's name</label>
             <input type="text" name="name" formControlName="name" required >
         </div>
-        <span *ngIf="name.errors?.['required'] && name.touched">
+        <span class="error" *ngIf="name.errors?.['required'] && name.touched">
             Please Type in the name field.
         </span>
-        <span *ngIf="name.errors?.['wrong']">
+        <span class="error" *ngIf="name.errors?.['wrong']">
             hasan can't be a name.
         </span>
     </section>
@@ -16,7 +16,7 @@
             <label for="password">Enter your password</label>
             <input type="password" name="password" formControlName="pass" required>
         </div>
-        <span *ngIf="pass.errors?.['minlength'] && pass.touched">
+        <span class="error" *ngIf="pass.errors?.['minlength'] && pass.touched">
             Password must be longer than 8 characters
         </span>
     </section>
@@ -25,17 +25,17 @@
             <label for="email">Enter your email</label>
             <input type="text" name="email" formControlName="email" required>
         </div>
-        <span *ngIf="(email.errors?.['email'] && email.touched)">
+        <span class="error" *ngIf="(email.errors?.['email'] && email.touched)">
             Please enter your email in the correct form
         </span>
-        <span *ngIf="form.errors?.['privacyBreached']  && pass.valid">
+        <span class="error" *ngIf="form.errors?.['privacyBreached']  && pass.valid">
             Password can't be a substring of the email.
         </span>
-        <span *ngIf="email.errors?.['usedEmail']">
+        <span class="error" *ngIf="email.errors?.['usedEmail']">
             This email is already used.
         </span>
     </section>
-    <button type="submit">
-        confirm
+    <button type="submit" [disabled]="form.invalid">
+        Confirm
     </button>
 </form>

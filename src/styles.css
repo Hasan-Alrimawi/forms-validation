@@ -10,4 +10,18 @@
     flex-direction: column;
     gap: 60px;
     background-color: aliceblue;
+    padding: 20px 0 15px 10px;
+}
+
+.error{
+    background-color: rgb(255, 129, 129);
+    color: white;
+}
+
+button{
+    width: 70px;
+}
+
+label{
+    width: 165px;
 }

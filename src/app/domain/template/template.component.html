@@ -1,35 +1,41 @@
-<form #templateForm="ngForm" class="columnSpacing">
+<form #templateForm="ngForm" class="columnSpacing" appCrossValidation>
     <section>
         <div class="twoOnRow">
             <label for="name">Enter your profile's name</label>
             <input type="text" id="name" name="name"  required [appNameValidation]="blackListedNames" [(ngModel)]="temp.name" #name="ngModel">
         </div>
-        <span *ngIf="name.errors?.['required'] && name.touched">
+        <span class="error" *ngIf="name.errors?.['required'] && name.touched">
             Please type in a name.
         </span>
-        <span *ngIf="name.errors?.['wrong']">
-            Name cant be hasan.
+        <span class="error" *ngIf="name.errors?.['wrong']">
+            Name can't be hasan.
         </span>
     </section>
     <section>
         <div class="twoOnRow">
             <label for="password">Enter your password</label>
-            <input type="password" name="password" id="password" required minlength="8" [(ngModel)]="temp.password" #password="ngModel" >
+            <input type="password" name="pass" id="pass" required minlength="8" [(ngModel)]="temp.password" #pass="ngModel" >
         </div>
-        <span *ngIf="password.errors?.['minlength'] && password.touched">
+        <span class="error" *ngIf="pass.errors?.['minlength'] && pass.touched">
             password must be at least 8 characters. 
         </span>
     </section>
     <section>
         <div class="twoOnRow">
             <label for="email">Enter your email</label>
-            <input type="email" name="email" id="email" required email [(ngModel)]="temp.email" #email="ngModel">
+            <input type="email" name="email" id="email" required email [(ngModel)]="temp.email" #email="ngModel" appUniqueEmailValidator>
         </div>
-        <span *ngIf="email.invalid && email.touched">
+        <span class="error" *ngIf="email.errors?.['email'] && email.touched">
             Please enter email in the correct form. 
         </span>
+        <span class="error" *ngIf="email.errors?.['usedEmail']">
+            This email is already used, try another email.
+        </span>
+        <span class="error" *ngIf="templateForm.errors?.['privacyBreached'] == true && email.valid && pass.valid">
+            Password can't be a substring of the email.
+        </span>
     </section>
-    <button type="submit">
-        confirm
+    <button type="submit" [disabled]="templateForm.invalid">
+        Confirm
     </button>
 </form>

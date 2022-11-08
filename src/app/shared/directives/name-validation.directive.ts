@@ -15,7 +15,7 @@ export function nameExcluder(blackedListedNames: string[]): ValidatorFn {
 export class NameValidationDirective implements Validator {
 
 
-  @Input('appNameValidation') names: string[] = [];                                                         //hereeee
+  @Input('appNameValidation') names: string[] = [];
   constructor() { }
 
   validate(control: FormControl): ValidationErrors | null {
